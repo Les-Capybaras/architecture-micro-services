@@ -1,0 +1,59 @@
+version: "3"
+services:
+  user_microservice:
+    container_name: ${CONTAINER_NAME:?err}-USER
+    build:
+      context: ./user_service
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+
+  budget_microservice:
+    container_name: ${CONTAINER_NAME:?err}-BUDGET
+    build:
+      context: ./budget_service
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8081:8081"
+
+  booking_microservice:
+    container_name: ${CONTAINER_NAME:?err}-BOOKING
+    build:
+      context: ./booking_service
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8082:8082"
+    command: npm start
+  provider_microservice:
+    container_name: ${CONTAINER_NAME:?err}-PROVIDER
+    build:
+      context: ./provider_service
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8083:8083"
+    command: npm start
+  messaging_microservice:
+    container_name: ${CONTAINER_NAME:?err}-MESSAGING
+    build:
+      context: ./messaging_service
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8084:8084"
+    command: npm start
+
+  database:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - user_service/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata:
