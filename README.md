@@ -4,9 +4,9 @@
 
 ### Microservices
 
-L'application est composé de 3 microservices. ls tournent respectivement sur les ports 8080, 8081, 8082. Ces ports sont les mêmes pour le réseau interne à docker, comme pour ceux exterieurs. Ces ports doivent donc être disponible, et non utilisés par d'autre application.
+L'application est composé de 5 microservices. ls tournent respectivement sur les ports 8080, 8081, 8082, 8083, 8084. Ces ports sont les mêmes pour le réseau interne à docker, comme pour ceux exterieurs. Ces ports doivent donc être disponible, et non utilisés par d'autre application.
 
-Comme préciser précedemment, ces microservices sont containerizer via Docker, et peuvent être initialiser par la commande suivante :
+Ces microservices sont containerizer via Docker, et peuvent être initialiser par la commande suivante :
 
 ```
 $ docker-compose up
